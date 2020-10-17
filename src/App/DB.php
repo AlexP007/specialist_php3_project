@@ -3,6 +3,7 @@
 
 namespace App;
 
+
 class DB
 {
     private static $instance;
