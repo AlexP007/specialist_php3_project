@@ -24,7 +24,7 @@ include "../autoload.php";
                     </div>
                     <div class="form-group">
                         <label for="text">Статья</label>
-                        <textarea class="form-control" id="text" rows="3" name="text"></textarea>
+                        <textarea class="form-control" id="text" rows="3" name="body"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="sort">Сортировка</label>
