@@ -4,9 +4,13 @@
 namespace App;
 
 
+use SQLite3;
+
 class DB
 {
     private static $instance;
+
+    private $db;
 
     private final function __construct()
     {
@@ -24,5 +28,10 @@ class DB
     public function test(): void
     {
         echo 'running...';
+    }
+
+    public function getDb(): SQLite3
+    {
+        return $this->db;
     }
 }

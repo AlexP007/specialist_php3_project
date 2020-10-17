@@ -4,6 +4,8 @@
 namespace Model;
 
 
+use App\DB;
+
 class Blog
 {
     public function save(): bool
@@ -11,7 +13,12 @@ class Blog
 
     }
 
-    public function getAll(): array
+    public static function getAll(): array
+    {
+
+    }
+
+    public static function createTable()
     {
 
     }
