@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/soap.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Calc" targetNamespace="http://localhost/soap.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/soap.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="CalcPort">
+    <operation name="sum">
+      <input message="tns:sumIn"/>
+      <output message="tns:sumOut"/>
+    </operation>
+    <operation name="prod">
+      <input message="tns:prodIn"/>
+      <output message="tns:prodOut"/>
+    </operation>
+  </portType>
+  <binding name="CalcBinding" type="tns:CalcPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sum">
+      <soap:operation soapAction="http://localhost/soap.php#sum"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soap.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soap.php"/>
+      </output>
+    </operation>
+    <operation name="prod">
+      <soap:operation soapAction="http://localhost/soap.php#prod"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soap.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soap.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="sumIn">
+    <part name="args" type="xsd:int"/>
+  </message>
+  <message name="sumOut">
+    <part name="return" type="xsd:int"/>
+  </message>
+  <message name="prodIn">
+    <part name="args" type="xsd:int"/>
+  </message>
+  <message name="prodOut">
+    <part name="return" type="xsd:int"/>
+  </message>
+  <service name="CalcService">
+    <port name="CalcPort" binding="tns:CalcBinding">
+      <soap:address location="http://localhost/soap.php"/>
+    </port>
+  </service>
+</definitions>
